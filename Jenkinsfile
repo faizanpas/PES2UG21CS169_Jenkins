@@ -1,33 +1,22 @@
 pipeline {
     agent any
 
-    // stages {
-    //     stage('Clone repository') {
-    //         steps {
-    //             // Checkout the repository
-    //             checkout([$class: 'GitSCM',
-    //                 branches: [[name: '*/main']],
-    //                 userRemoteConfigs: [[url: 'https://github.com/faizanpas/PES2UG21CS169_Jenkins.git']]])
-    //         }
-    //     }
-
-        stage('Build') {
-            steps {
-                build 'PES2UG21CS169-1'
-                sh "g++ jenkins_pipeline.cpp -o output"
-            }
+    stage('Build') {
+        steps {
+            build 'PES2UG21CS169-1'
+            sh "g++ jenkins_pipeline.cpp -o output"
         }
+    }
 
-        stage('Test') {
-            steps {
-                sh "./output"
-            }
+    stage('Test') {
+        steps {
+            sh "./output"
         }
+    }
 
-        stage('Deploy') {
-            steps {
-                echo 'Deployment step'
-            }
+    stage('Deploy') {
+        steps {
+            echo 'Deployment step'
         }
     }
 
@@ -38,3 +27,4 @@ pipeline {
         }
     }
 }
+
