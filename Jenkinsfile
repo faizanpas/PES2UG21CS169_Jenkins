@@ -14,12 +14,12 @@ pipeline {
                 sh "./output"
             }
         }
-
         stage('Deploy') {
             steps {
-                echo 'Deployment step'
-            }
-        }
+                sh "deploy_script.sh nonexistent_file"
+             }
+           }
+
     }
 
     post {
